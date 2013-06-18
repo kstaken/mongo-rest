@@ -8,6 +8,8 @@ var server = http.createServer(app)
 var resource = require("./resource.js");
 var Resource = resource.Resource
 
+var port = process.env.PORT || 8080;
+
 app.configure(function() {
     //app.use(express.logger());
     app.use(express.bodyParser());
@@ -22,7 +24,7 @@ app.configure('development', function() {
     }));
 
     mongoose.connect(resource.datasources['development']);
-    server.listen(8080);
+    server.listen(port);
     console.log('Running in development mode');
 })
 
@@ -33,7 +35,7 @@ app.configure('test', function() {
     }));
 
     mongoose.connect(resource.datasources['test']);
-    server.listen(8080);
+    server.listen(port);
     console.log('Running in test mode');
 })
 
