@@ -9,6 +9,8 @@ var resource = require("./resource.js");
 var Resource = resource.Resource
 
 var port = process.env.PORT || 8080;
+var nodeUser = "nobody";
+var nodeGroup = "nogroup";
 
 app.configure(function() {
     //app.use(express.logger());
@@ -26,6 +28,9 @@ app.configure('development', function() {
     mongoose.connect(resource.datasources['development']);
     server.listen(port);
     console.log('Running in development mode');
+    
+    process.setgid(nodeGroup);
+    process.setuid(nodeUser);
 })
 
 app.configure('test', function() {
