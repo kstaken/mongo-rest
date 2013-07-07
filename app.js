@@ -1,4 +1,3 @@
-
 var express = require('express'),
     http = require('http'),
     mongoose = require('mongoose');
@@ -10,6 +9,7 @@ var resource = require("./resource.js");
 var Resource = resource.Resource
 
 var port = process.env.PORT || 8080;
+//console.log("HTTP server will listen on port: " + port);
 var nodeUser = "nobody";
 var nodeGroup = "nogroup";
 

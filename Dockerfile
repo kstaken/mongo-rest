@@ -20,4 +20,7 @@ ADD . /var/www
 
 RUN cd /var/www ; npm install 
 
+EXPOSE 80
+ENV PORT 80
+
 CMD ["/usr/local/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"] 
